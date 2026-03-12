@@ -1,0 +1,1060 @@
+       table_name       | row_count 
+------------------------+-----------
+ bcfishobs.observations |    372378
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.barriers_anthropogenic |         0
+(1 row)
+
+                           table_name                           | row_count 
+----------------------------------------------------------------+-----------
+ bcfishpass.barriers_anthropogenic_dnstr_barriers_anthropogenic |         0
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ bcfishpass.barriers_bt |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ bcfishpass.barriers_ch_cm_co_pk_sk |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.barriers_ct_dv_rb |         0
+(1 row)
+
+        table_name        | row_count 
+--------------------------+-----------
+ bcfishpass.barriers_dams |         0
+(1 row)
+
+           table_name           | row_count 
+--------------------------------+-----------
+ bcfishpass.barriers_dams_hydro |         0
+(1 row)
+
+        table_name         | row_count 
+---------------------------+-----------
+ bcfishpass.barriers_falls |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.barriers_gradient |         0
+(1 row)
+
+        table_name         | row_count 
+---------------------------+-----------
+ bcfishpass.barriers_pscis |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ bcfishpass.barriers_remediations |         0
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ bcfishpass.barriers_st |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ bcfishpass.barriers_subsurfaceflow |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.barriers_user_definite |         0
+(1 row)
+
+       table_name        | row_count 
+-------------------------+-----------
+ bcfishpass.barriers_wct |         0
+(1 row)
+
+        table_name         | row_count 
+---------------------------+-----------
+ bcfishpass.cabd_additions |         0
+(1 row)
+
+         table_name         | row_count 
+----------------------------+-----------
+ bcfishpass.cabd_blkey_xref |         0
+(1 row)
+
+         table_name         | row_count 
+----------------------------+-----------
+ bcfishpass.cabd_exclusions |         0
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ bcfishpass.cabd_passability_status_updates |         0
+(1 row)
+
+      table_name      | row_count 
+----------------------+-----------
+ bcfishpass.crossings |         0
+(1 row)
+
+                    table_name                     | row_count 
+---------------------------------------------------+-----------
+ bcfishpass.crossings_dnstr_barriers_anthropogenic |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ bcfishpass.crossings_dnstr_crossings |         0
+(1 row)
+
+               table_name                | row_count 
+-----------------------------------------+-----------
+ bcfishpass.crossings_dnstr_observations |         0
+(1 row)
+
+                    table_name                     | row_count 
+---------------------------------------------------+-----------
+ bcfishpass.crossings_upstr_barriers_anthropogenic |         0
+(1 row)
+
+                  table_name                   | row_count 
+-----------------------------------------------+-----------
+ bcfishpass.crossings_upstr_barriers_per_model |         0
+(1 row)
+
+               table_name                | row_count 
+-----------------------------------------+-----------
+ bcfishpass.crossings_upstr_observations |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ bcfishpass.crossings_upstream_access |         0
+(1 row)
+
+              table_name               | row_count 
+---------------------------------------+-----------
+ bcfishpass.crossings_upstream_habitat |         0
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ bcfishpass.crossings_upstream_habitat_wcrp |         0
+(1 row)
+
+   table_name    | row_count 
+-----------------+-----------
+ bcfishpass.dams |         0
+(1 row)
+
+      table_name       | row_count 
+-----------------------+-----------
+ bcfishpass.db_version |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ bcfishpass.dfo_known_sockeye_lakes |         0
+(1 row)
+
+    table_name    | row_count 
+------------------+-----------
+ bcfishpass.falls |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.gradient_barriers |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_bt |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_ch |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_cm |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_co |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_pk |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_sk |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.habitat_linear_st |         0
+(1 row)
+
+          table_name           | row_count 
+-------------------------------+-----------
+ bcfishpass.habitat_linear_wct |         0
+(1 row)
+
+   table_name   | row_count 
+----------------+-----------
+ bcfishpass.log |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ bcfishpass.log_aw_linear_summary |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ bcfishpass.log_objectstorage |         0
+(1 row)
+
+                table_name                | row_count 
+------------------------------------------+-----------
+ bcfishpass.log_parameters_habitat_method |         0
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ bcfishpass.log_parameters_habitat_thresholds |         0
+(1 row)
+
+         table_name         | row_count 
+----------------------------+-----------
+ bcfishpass.log_replication |         6
+(1 row)
+
+             table_name              | row_count 
+-------------------------------------+-----------
+ bcfishpass.log_wsg_crossing_summary |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.log_wsg_linear_summary |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ bcfishpass.modelled_stream_crossings |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.observation_exclusions |         0
+(1 row)
+
+       table_name        | row_count 
+-------------------------+-----------
+ bcfishpass.observations |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ bcfishpass.parameters_habitat_method |         0
+(1 row)
+
+                table_name                | row_count 
+------------------------------------------+-----------
+ bcfishpass.parameters_habitat_thresholds |         0
+(1 row)
+
+    table_name    | row_count 
+------------------+-----------
+ bcfishpass.pscis |         0
+(1 row)
+
+                   table_name                    | row_count 
+-------------------------------------------------+-----------
+ bcfishpass.pscis_modelledcrossings_streams_xref |         0
+(1 row)
+
+               table_name                | row_count 
+-----------------------------------------+-----------
+ bcfishpass.pscis_not_matched_to_streams |         0
+(1 row)
+
+         table_name          | row_count 
+-----------------------------+-----------
+ bcfishpass.pscis_points_all |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ bcfishpass.pscis_points_duplicates |         0
+(1 row)
+
+          table_name           | row_count 
+-------------------------------+-----------
+ bcfishpass.pscis_streams_150m |         0
+(1 row)
+
+                   table_name                    | row_count 
+-------------------------------------------------+-----------
+ bcfishpass.qa_naturalbarriers_ch_cm_co_pk_sk_st |         0
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ bcfishpass.qa_observations_ch_cm_co_pk_sk_st |         0
+(1 row)
+
+     table_name     | row_count 
+--------------------+-----------
+ bcfishpass.streams |         0
+(1 row)
+
+        table_name         | row_count 
+---------------------------+-----------
+ bcfishpass.streams_access |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.streams_dnstr_barriers |         0
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ bcfishpass.streams_dnstr_barriers_remediations |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ bcfishpass.streams_dnstr_crossings |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ bcfishpass.streams_dnstr_species |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ bcfishpass.streams_habitat_known |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.streams_habitat_linear |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ bcfishpass.streams_mapping_code |         0
+(1 row)
+
+              table_name               | row_count 
+---------------------------------------+-----------
+ bcfishpass.streams_upstr_observations |         0
+(1 row)
+
+               table_name               | row_count 
+----------------------------------------+-----------
+ bcfishpass.user_barriers_anthropogenic |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ bcfishpass.user_barriers_definite |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ bcfishpass.user_barriers_definite_control |         0
+(1 row)
+
+               table_name               | row_count 
+----------------------------------------+-----------
+ bcfishpass.user_habitat_classification |         0
+(1 row)
+
+                    table_name                    | row_count 
+--------------------------------------------------+-----------
+ bcfishpass.user_habitat_classification_endpoints |         0
+(1 row)
+
+               table_name                | row_count 
+-----------------------------------------+-----------
+ bcfishpass.user_modelled_crossing_fixes |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ bcfishpass.user_pscis_barrier_status |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ bcfishpass.wcrp_confirmed_barriers |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ bcfishpass.wcrp_data_deficient_structures |         0
+(1 row)
+
+             table_name              | row_count 
+-------------------------------------+-----------
+ bcfishpass.wcrp_excluded_structures |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ bcfishpass.wcrp_ranked_barriers |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ bcfishpass.wcrp_rehabilitiated_structures |         0
+(1 row)
+
+         table_name         | row_count 
+----------------------------+-----------
+ bcfishpass.wcrp_watersheds |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ bcfishpass.wsg_species_presence |         0
+(1 row)
+
+ table_name | row_count 
+------------+-----------
+ cabd.dams  |      2594
+(1 row)
+
+   table_name    | row_count 
+-----------------+-----------
+ cabd.waterfalls |     14657
+(1 row)
+
+         table_name         | row_count 
+----------------------------+-----------
+ hydrosheds.hybas_lev12_v1c |         0
+(1 row)
+
+         table_name         | row_count 
+----------------------------+-----------
+ ogr_system_tables.metadata |         1
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ public.spatial_ref_sys |      8500
+(1 row)
+
+ table_name | row_count 
+------------+-----------
+ tiger.addr |         0
+(1 row)
+
+   table_name   | row_count 
+----------------+-----------
+ tiger.addrfeat |         0
+(1 row)
+
+ table_name | row_count 
+------------+-----------
+ tiger.bg   |         0
+(1 row)
+
+  table_name  | row_count 
+--------------+-----------
+ tiger.county |         0
+(1 row)
+
+     table_name      | row_count 
+---------------------+-----------
+ tiger.county_lookup |         0
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ tiger.countysub_lookup |         0
+(1 row)
+
+  table_name  | row_count 
+--------------+-----------
+ tiger.cousub |         0
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ tiger.direction_lookup |        28
+(1 row)
+
+ table_name  | row_count 
+-------------+-----------
+ tiger.edges |         0
+(1 row)
+
+ table_name  | row_count 
+-------------+-----------
+ tiger.faces |         0
+(1 row)
+
+   table_name    | row_count 
+-----------------+-----------
+ tiger.featnames |         0
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ tiger.geocode_settings |         0
+(1 row)
+
+           table_name           | row_count 
+--------------------------------+-----------
+ tiger.geocode_settings_default |         7
+(1 row)
+
+        table_name         | row_count 
+---------------------------+-----------
+ tiger.loader_lookuptables |        13
+(1 row)
+
+      table_name       | row_count 
+-----------------------+-----------
+ tiger.loader_platform |         2
+(1 row)
+
+       table_name       | row_count 
+------------------------+-----------
+ tiger.loader_variables |         1
+(1 row)
+
+   table_name   | row_count 
+----------------+-----------
+ tiger.pagc_gaz |       835
+(1 row)
+
+   table_name   | row_count 
+----------------+-----------
+ tiger.pagc_lex |      2938
+(1 row)
+
+    table_name    | row_count 
+------------------+-----------
+ tiger.pagc_rules |      4354
+(1 row)
+
+ table_name  | row_count 
+-------------+-----------
+ tiger.place |         0
+(1 row)
+
+     table_name     | row_count 
+--------------------+-----------
+ tiger.place_lookup |         0
+(1 row)
+
+         table_name          | row_count 
+-----------------------------+-----------
+ tiger.secondary_unit_lookup |        39
+(1 row)
+
+ table_name  | row_count 
+-------------+-----------
+ tiger.state |         0
+(1 row)
+
+     table_name     | row_count 
+--------------------+-----------
+ tiger.state_lookup |        59
+(1 row)
+
+        table_name        | row_count 
+--------------------------+-----------
+ tiger.street_type_lookup |       609
+(1 row)
+
+   table_name   | row_count 
+----------------+-----------
+ tiger.tabblock |         0
+(1 row)
+
+    table_name    | row_count 
+------------------+-----------
+ tiger.tabblock20 |         0
+(1 row)
+
+ table_name  | row_count 
+-------------+-----------
+ tiger.tract |         0
+(1 row)
+
+ table_name  | row_count 
+-------------+-----------
+ tiger.zcta5 |         0
+(1 row)
+
+    table_name    | row_count 
+------------------+-----------
+ tiger.zip_lookup |         0
+(1 row)
+
+      table_name      | row_count 
+----------------------+-----------
+ tiger.zip_lookup_all |         0
+(1 row)
+
+      table_name       | row_count 
+-----------------------+-----------
+ tiger.zip_lookup_base |         0
+(1 row)
+
+   table_name    | row_count 
+-----------------+-----------
+ tiger.zip_state |         0
+(1 row)
+
+     table_name      | row_count 
+---------------------+-----------
+ tiger.zip_state_loc |         0
+(1 row)
+
+   table_name   | row_count 
+----------------+-----------
+ topology.layer |         0
+(1 row)
+
+    table_name     | row_count 
+-------------------+-----------
+ topology.topology |         0
+(1 row)
+
+  table_name  | row_count 
+--------------+-----------
+ usgs.wbdhu12 |         0
+(1 row)
+
+                     table_name                     | row_count 
+----------------------------------------------------+-----------
+ whse_admin_boundaries.adm_indian_reserves_bands_sp |         0
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ whse_admin_boundaries.adm_nr_districts_spg |         0
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ whse_admin_boundaries.clab_indian_reserves |      1600
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ whse_admin_boundaries.clab_national_parks |       102
+(1 row)
+
+           table_name           | row_count 
+--------------------------------+-----------
+ whse_basemapping.bcgs_20k_grid |         0
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ whse_basemapping.cwb_floodplains_bc_area_svw |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ whse_basemapping.dbm_mof_50k_grid |         0
+(1 row)
+
+             table_name              | row_count 
+-------------------------------------+-----------
+ whse_basemapping.fwa_approx_borders |         0
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ whse_basemapping.fwa_assessment_watersheds_lut |         0
+(1 row)
+
+                   table_name                    | row_count 
+-------------------------------------------------+-----------
+ whse_basemapping.fwa_assessment_watersheds_poly |         0
+(1 row)
+
+                       table_name                       | row_count 
+--------------------------------------------------------+-----------
+ whse_basemapping.fwa_assessment_watersheds_streams_lut |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ whse_basemapping.fwa_basins_poly |         0
+(1 row)
+
+                 table_name                  | row_count 
+---------------------------------------------+-----------
+ whse_basemapping.fwa_bays_and_channels_poly |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ whse_basemapping.fwa_bcboundary |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ whse_basemapping.fwa_coastlines_sp |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ whse_basemapping.fwa_edge_type_codes |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ whse_basemapping.fwa_glaciers_poly |         0
+(1 row)
+
+            table_name             | row_count 
+-----------------------------------+-----------
+ whse_basemapping.fwa_islands_poly |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ whse_basemapping.fwa_lakes_poly |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ whse_basemapping.fwa_linear_boundaries_sp |         0
+(1 row)
+
+                  table_name                   | row_count 
+-----------------------------------------------+-----------
+ whse_basemapping.fwa_manmade_waterbodies_poly |         0
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ whse_basemapping.fwa_named_point_features_sp |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ whse_basemapping.fwa_named_streams |         0
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ whse_basemapping.fwa_named_watersheds_poly |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ whse_basemapping.fwa_obstructions_sp |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ whse_basemapping.fwa_rivers_poly |         0
+(1 row)
+
+                     table_name                     | row_count 
+----------------------------------------------------+-----------
+ whse_basemapping.fwa_stream_networks_channel_width |         0
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ whse_basemapping.fwa_stream_networks_discharge |         0
+(1 row)
+
+                       table_name                        | row_count 
+---------------------------------------------------------+-----------
+ whse_basemapping.fwa_stream_networks_mean_annual_precip |         0
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ whse_basemapping.fwa_stream_networks_order_max |         0
+(1 row)
+
+                    table_name                     | row_count 
+---------------------------------------------------+-----------
+ whse_basemapping.fwa_stream_networks_order_parent |         0
+(1 row)
+
+               table_name                | row_count 
+-----------------------------------------+-----------
+ whse_basemapping.fwa_stream_networks_sp |         0
+(1 row)
+
+          table_name          | row_count 
+------------------------------+-----------
+ whse_basemapping.fwa_streams |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ whse_basemapping.fwa_streams_20k_50k |         0
+(1 row)
+
+                       table_name                        | row_count 
+---------------------------------------------------------+-----------
+ whse_basemapping.fwa_streams_pse_conservation_units_lut |         0
+(1 row)
+
+                 table_name                  | row_count 
+---------------------------------------------+-----------
+ whse_basemapping.fwa_streams_watersheds_lut |         0
+(1 row)
+
+            table_name            | row_count 
+----------------------------------+-----------
+ whse_basemapping.fwa_waterbodies |         0
+(1 row)
+
+                table_name                | row_count 
+------------------------------------------+-----------
+ whse_basemapping.fwa_waterbodies_20k_50k |         0
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ whse_basemapping.fwa_waterbodies_upstream_area |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ whse_basemapping.fwa_waterbody_type_codes |         0
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ whse_basemapping.fwa_watershed_groups_poly |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ whse_basemapping.fwa_watershed_type_codes |         0
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ whse_basemapping.fwa_watersheds_poly |         0
+(1 row)
+
+                  table_name                   | row_count 
+-----------------------------------------------+-----------
+ whse_basemapping.fwa_watersheds_upstream_area |         0
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ whse_basemapping.fwa_watersheds_xborder_poly |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ whse_basemapping.fwa_wetlands_poly |         0
+(1 row)
+
+                  table_name                   | row_count 
+-----------------------------------------------+-----------
+ whse_basemapping.gba_local_reg_greenspaces_sp |      9212
+(1 row)
+
+                   table_name                    | row_count 
+-------------------------------------------------+-----------
+ whse_basemapping.gba_railway_structure_lines_sp |      1391
+(1 row)
+
+               table_name               | row_count 
+----------------------------------------+-----------
+ whse_basemapping.gba_railway_tracks_sp |     10055
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ whse_basemapping.gba_transmission_lines_sp |      3611
+(1 row)
+
+                 table_name                 | row_count 
+--------------------------------------------+-----------
+ whse_basemapping.gns_geographical_names_sp |     41059
+(1 row)
+
+           table_name           | row_count 
+--------------------------------+-----------
+ whse_basemapping.nts_250k_grid |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ whse_basemapping.transport_line |   1961454
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ whse_basemapping.transport_line_divided_code |         3
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ whse_basemapping.transport_line_structure_code |        12
+(1 row)
+
+                  table_name                  | row_count 
+----------------------------------------------+-----------
+ whse_basemapping.transport_line_surface_code |         9
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ whse_basemapping.transport_line_type_code |        36
+(1 row)
+
+              table_name              | row_count 
+--------------------------------------+-----------
+ whse_basemapping.trim_cultural_lines |         0
+(1 row)
+
+              table_name               | row_count 
+---------------------------------------+-----------
+ whse_basemapping.trim_cultural_points |         0
+(1 row)
+
+             table_name              | row_count 
+-------------------------------------+-----------
+ whse_basemapping.trim_ebm_airfields |         0
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ whse_basemapping.trim_ebm_ocean |         0
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ whse_basemapping.utmg_utm_zones_sp |         0
+(1 row)
+
+                table_name                 | row_count 
+-------------------------------------------+-----------
+ whse_cadastre.pmbc_parcel_fabric_poly_svw |         0
+(1 row)
+
+                       table_name                        | row_count 
+---------------------------------------------------------+-----------
+ whse_environmental_monitoring.envcan_hydrometric_stn_sp |      2317
+(1 row)
+
+             table_name             | row_count 
+------------------------------------+-----------
+ whse_fish.fiss_fish_obsrvtn_pnt_sp |    378925
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ whse_fish.fiss_obstacles_pnt_sp |     24832
+(1 row)
+
+              table_name               | row_count 
+---------------------------------------+-----------
+ whse_fish.fiss_stream_sample_sites_sp |     68842
+(1 row)
+
+           table_name           | row_count 
+--------------------------------+-----------
+ whse_fish.pscis_assessment_svw |     19849
+(1 row)
+
+             table_name              | row_count 
+-------------------------------------+-----------
+ whse_fish.pscis_design_proposal_svw |       147
+(1 row)
+
+                table_name                | row_count 
+------------------------------------------+-----------
+ whse_fish.pscis_habitat_confirmation_svw |       410
+(1 row)
+
+           table_name            | row_count 
+---------------------------------+-----------
+ whse_fish.pscis_remediation_svw |       177
+(1 row)
+
+      table_name      | row_count 
+----------------------+-----------
+ whse_fish.species_cd |       192
+(1 row)
+
+               table_name               | row_count 
+----------------------------------------+-----------
+ whse_forest_tenure.ften_range_poly_svw |      4319
+(1 row)
+
+                   table_name                   | row_count 
+------------------------------------------------+-----------
+ whse_forest_tenure.ften_road_section_lines_svw |    280816
+(1 row)
+
+                 table_name                  | row_count 
+---------------------------------------------+-----------
+ whse_forest_vegetation.veg_comp_lyr_r1_poly |         0
+(1 row)
+
+                    table_name                    | row_count 
+--------------------------------------------------+-----------
+ whse_imagery_and_base_maps.mot_road_structure_sp |      7778
+(1 row)
+
+                     table_name                     | row_count 
+----------------------------------------------------+-----------
+ whse_legal_admin_boundaries.abms_municipalities_sp |       160
+(1 row)
+
+                       table_name                       | row_count 
+--------------------------------------------------------+-----------
+ whse_legal_admin_boundaries.abms_regional_districts_sp |         0
+(1 row)
+
+                     table_name                     | row_count 
+----------------------------------------------------+-----------
+ whse_mineral_tenure.og_petrlm_dev_rds_pre06_pub_sp |       988
+(1 row)
+
+                  table_name                   | row_count 
+-----------------------------------------------+-----------
+ whse_mineral_tenure.og_road_segment_permit_sp |     10051
+(1 row)
+
+               table_name               | row_count 
+----------------------------------------+-----------
+ whse_tantalis.ta_conservancy_areas_svw |       169
+(1 row)
+
+             table_name              | row_count 
+-------------------------------------+-----------
+ whse_tantalis.ta_park_ecores_pa_svw |       930
+(1 row)
+
