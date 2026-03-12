@@ -29,10 +29,16 @@ See the [Documentation](https://smnorris.github.io/bcfishpass/) for details.
     git clone https://github.com/smnorris/bcfishpass.git
     cd bcfishpass
 
+Or, to clone this forked repo:
+
+    git clone https://github.com/emarmitage/bcfishpass.git
+    cd bcfishpass
+
 If running the scripts on your host OS, install required tools/dependencies using your preferred package manager.
 See the `Dockerfile` for the list of tools required.
 
-All scripts presume the path to an existing PostGIS enabled database is defined by the environment variable `$DATABASE_URL`:
+All scripts presume the path to an existing PostGIS enabled database is defined by the environment variable `$DATABASE_URL`:  
+Note that if you are running the model inside the docker container, you do not need to set the environment variable. 
 
     export DATABASE_URL=postgresql://postgres@localhost:5432/bcfishpass
 
@@ -45,7 +51,7 @@ Clone the repository as above, then build and start the containers:
 
 Create the database schema and load FWA and other required data (this takes some time):
 
-    docker compose run --rm runner test/build_db.sh
+    docker compose run --rm runner bash -lc 'test/build_db.sh'
 
 Docker is configured to write the database to `postgres-data` - even if containers are deleted, the database will be retained here.
 If you have shut down Docker or the container, start it up again with the same `up` command:
@@ -61,7 +67,7 @@ Note that the specific localhost port mapped to the postgres port (5432) in the 
 
 To run the habitat models on watershed groups specified in `parameters/example_testing`:
 
-    docker compose run --rm runner test/test.sh
+    docker compose run --rm runner bash -lc 'test/test.sh'
 
 Drop in to the docker container to interactively run scripts as needed:
 
