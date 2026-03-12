@@ -35,6 +35,9 @@ RUN ARCH=$(uname -m) \
 
 WORKDIR /home/bcfishpass
 
+# trust all paths within the container
+RUN git config --system --add safe.directory /home/bcfishpass
+
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/python -m pip install -U pip && \
     /opt/venv/bin/python -m pip install --no-cache-dir --upgrade numpy && \
