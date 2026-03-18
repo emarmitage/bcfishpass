@@ -25,6 +25,7 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash \
     && apt-get -qq install -y --no-install-recommends openssh-client \
     && apt-get -qq install -y --no-install-recommends autossh \
     && apt-get -qq install -y --no-install-recommends less \
+    && apt-get -qq install -y --no-install-recommends bzip2 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN ARCH=$(uname -m) \
@@ -34,6 +35,7 @@ RUN ARCH=$(uname -m) \
     && rm -rf awscliv2.zip aws
 
 WORKDIR /home/bcfishpass
+RUN git config --global --add safe.directory /home/bcfishpass
 
 RUN python3 -m venv /opt/venv && \
     /opt/venv/bin/python -m pip install -U pip && \
