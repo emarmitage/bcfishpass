@@ -15,5 +15,5 @@ for BARRIERTYPE in "${NATURAL_BARRIERS[@]}"; do
     $PSQL -c "select bcfishpass.create_barrier_table('$BARRIERTYPE')"
     
     # load data to barrier table in parallel
-    parallel --halt soon,fail=1 $PSQL -f sql/barriers_"$BARRIERTYPE".sql -v wsg={1} ::: $WSGS
+    parallel -jobs 4 --halt soon,fail=1 $PSQL -f sql/barriers_"$BARRIERTYPE".sql -v wsg={1} ::: $WSGS
 done
