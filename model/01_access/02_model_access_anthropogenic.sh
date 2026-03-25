@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euxo pipefail
 
+# use max 4 concurrent jobs for subsequent steps
+PARALLEL="parallel --halt now,fail=1 --jobs 4 --no-run-if-empty"
+
 PSQL="psql $DATABASE_URL -v ON_ERROR_STOP=1"
 WSGS=($(psql "$DATABASE_URL" -t -A -c "SELECT watershed_group_code FROM bcfishpass.parameters_habitat_method;"))
 
@@ -15,7 +18,7 @@ for BARRIERTYPE in "${BARRIERS[@]}"; do
     $PSQL -c "select bcfishpass.create_barrier_table('$BARRIERTYPE')"
     
     # load data to barrier table in parallel
-    parallel --halt soon,fail=1 \
+    parallel --jobs {$PARALLEL} --halt soon,fail=1 \
       $PSQL -f sql/barriers_"$BARRIERTYPE".sql -v wsg={1} ::: "${WSGS[@]}"
 
 done
@@ -25,7 +28,7 @@ done
 # ----
 # note all crossings downstream of a crossing
 $PSQL -c "truncate bcfishpass.crossings_dnstr_crossings"
-parallel --no-run-if-empty \
+parallel --jobs {$PARALLEL} --no-run-if-empty \
   "echo \"select bcfishpass.load_dnstr( \
     'bcfishpass.crossings',  \
     'aggregated_crossings_id', \
@@ -38,7 +41,7 @@ parallel --no-run-if-empty \
 
 # note all anthropogenic barriers downstream of a crossing
 $PSQL -c "truncate bcfishpass.crossings_dnstr_barriers_anthropogenic"
-parallel --no-run-if-empty \
+parallel --jobs {$PARALLEL} --no-run-if-empty \
   "echo \"select bcfishpass.load_dnstr( \
     'bcfishpass.crossings',  \
     'aggregated_crossings_id', \
@@ -51,7 +54,7 @@ parallel --no-run-if-empty \
 
 # note all anthropogenic barriers upstream of a crossing
 $PSQL -c "truncate bcfishpass.crossings_upstr_barriers_anthropogenic"
-parallel --no-run-if-empty \
+parallel --jobs {$PARALLEL} --no-run-if-empty \
   "echo \"select bcfishpass.load_upstr( \
     'bcfishpass.crossings',  \
     'aggregated_crossings_id', \
@@ -64,7 +67,7 @@ parallel --no-run-if-empty \
 
 # note all anthropogenic barriers downstream of an anthropogenic barrier
 $PSQL -c "truncate bcfishpass.barriers_anthropogenic_dnstr_barriers_anthropogenic"
-parallel --no-run-if-empty \
+parallel --jobs {$PARALLEL} --no-run-if-empty \
   "echo \"select bcfishpass.load_dnstr( \
     'bcfishpass.barriers_anthropogenic',  \
     'barriers_anthropogenic_id', \
@@ -74,10 +77,6 @@ parallel --no-run-if-empty \
     'features_dnstr', \
     'false', \
     :'wsg');\" | $PSQL -v wsg={1}" ::: "${WSGS[@]}"
-
-
-# use max 4 concurrent jobs for subsequent steps
-PARALLEL="parallel --halt now,fail=1 --jobs 4 --no-run-if-empty"
 
 # -----
 # INDEX 

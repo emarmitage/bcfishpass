@@ -13,7 +13,7 @@ for sql in sql/load_habitat_linear_*.sql
 do
   sp=$(echo $sql | sed -e "s/sql\/load_habitat_linear_//" | sed -e "s/.sql//")
   $PSQL -c "truncate bcfishpass.habitat_linear_"$sp
-  parallel --halt now,fail=1 --no-run-if-empty $PSQL -f $sql -v wsg={1} ::: $WSGS
+  parallel --jobs 4 --halt now,fail=1 --no-run-if-empty $PSQL -f $sql -v wsg={1} ::: $WSGS
 done
 
 # horsefly sockeye have their own model due to trans-watershed group spawning/rearing effects
