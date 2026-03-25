@@ -1,3 +1,5 @@
+-- Modified for Coastal Cutthroat Trout by Emma Armitage on 2026-03-25
+
 with barriers as
 (
   select
@@ -13,7 +15,7 @@ with barriers as
     geom
   from bcfishpass.barriers_gradient
   where watershed_group_code = :'wsg'
-  and barrier_type in ('GRADIENT_20', 'GRADIENT_25', 'GRADIENT_30')
+  and barrier_type in ('GRADIENT_20', 'GRADIENT_25')
   union all
   select
       barriers_falls_id as barrier_id,
@@ -72,7 +74,8 @@ obs_upstr as
   -- do not bother counting observations upstream of barriers that have been noted as barriers in the user control table
   left outer join bcfishpass.user_barriers_definite_control bc
   on b.blue_line_key = bc.blue_line_key and abs(b.downstream_route_measure - bc.downstream_route_measure) < 1
-  where o.species_code in ('CH','CM','CO','PK','SK','ST')
+  -- where o.species_code in ('CH','CM','CO','PK','SK','ST')
+  where o.species_code in ('ACT', 'CCT', 'CT')
   and bc.barrier_ind is null
 ),
 
@@ -82,7 +85,8 @@ obs_upstr_n as
     o.barrier_id,
     count(o.obs) as n_obs
   from obs_upstr o
-  where o.spp in ('CH','CM','CO','PK','SK','ST')
+  -- where o.spp in ('CH','CM','CO','PK','SK','ST')
+  where o.spp in ('ACT', 'CCT', 'CT')
   and o.obs_dt > date('1990-01-01')         -- only observations since 1990
   group by o.barrier_id
 ),
@@ -102,7 +106,8 @@ habitat as (
   and round(h.upstream_route_measure::numeric) >= round(s.downstream_route_measure::numeric)
   and round(h.upstream_route_measure::numeric) <= round(s.upstream_route_measure::numeric)
   where h.habitat_ind is true
-  and h.species_code in ('CH','CM','CO','PK','SK','ST')
+  -- and h.species_code in ('CH','CM','CO','PK','SK','ST')
+  and h.species_code in ('ACT', 'CCT', 'CT')
   and s.watershed_group_code = :'wsg'
 ),
 
@@ -152,9 +157,11 @@ barriers_filtered as (
   )
   -- do not include gradient / falls / subsurface barriers with > 5 observations upstream
   -- but always include user added barriers
+  -- for CCT: do not include gradient / falls / subsurface barriers with > 0 observations upstream
   and
         (
-          (o.n_obs is null or o.n_obs < 5) and
+          -- (o.n_obs is null or o.n_obs < 5) and
+          (o.n_obs is null or o.n_obs = 0) and
           h.species_codes is null
   )
 )
