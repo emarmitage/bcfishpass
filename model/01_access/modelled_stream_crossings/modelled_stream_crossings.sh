@@ -15,11 +15,11 @@ WSGS=$($PSQL -AXt -c "SELECT watershed_group_code FROM whse_basemapping.fwa_wate
 $PSQL -f sql/01_create_output_table.sql
 
 # load preliminary crossings, iterating through watershed groups for each data source
-parallel $PSQL -f sql/02_intersect_dra.sql -v wsg={1} ::: $WSGS
-parallel $PSQL -f sql/03_intersect_ften.sql -v wsg={1} ::: $WSGS
-parallel $PSQL -f sql/04_intersect_ogc.sql -v wsg={1} ::: $WSGS
-parallel $PSQL -f sql/05_intersect_ogcpre06.sql -v wsg={1} ::: $WSGS
-parallel $PSQL -f sql/06_intersect_railway.sql -v wsg={1} ::: $WSGS
+parallel $PSQL --jobs 4 -f sql/02_intersect_dra.sql -v wsg={1} ::: $WSGS
+parallel $PSQL --jobs 4 -f sql/03_intersect_ften.sql -v wsg={1} ::: $WSGS
+parallel $PSQL --jobs 4 -f sql/04_intersect_ogc.sql -v wsg={1} ::: $WSGS
+parallel $PSQL --jobs 4 -f sql/05_intersect_ogcpre06.sql -v wsg={1} ::: $WSGS
+parallel $PSQL --jobs 4 -f sql/06_intersect_railway.sql -v wsg={1} ::: $WSGS
 
 # remove duplicate crossings introduced by using multiple sources
 $PSQL -f sql/07_remove_duplicates.sql

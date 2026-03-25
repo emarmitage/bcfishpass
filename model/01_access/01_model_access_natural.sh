@@ -33,7 +33,7 @@ for BARRIERTYPE in "${NATURAL_BARRIERS[@]}"; do
     $PSQL -c "select bcfishpass.create_barrier_table('$BARRIERTYPE')"
 
     # load data to barrier table in parallel
-    parallel --halt soon,fail=1 $PSQL -f sql/barriers_"$BARRIERTYPE".sql -v wsg={1} ::: "${WSGS[@]}"
+    parallel --jobs 4 --halt soon,fail=1 $PSQL -f sql/barriers_"$BARRIERTYPE".sql -v wsg={1} ::: "${WSGS[@]}"
 done
 
 # --
@@ -45,7 +45,7 @@ for MODEL in ${MODELS[@]}; do
   $PSQL -c "select bcfishpass.create_barrier_table('$MODEL')"
 
   # load all features for given model to barrier table, for all groups
-  parallel --no-run-if-empty $PSQL -f sql/model_access_$MODEL.sql -v wsg={1} ::: "${WSGS[@]}"
+  parallel --jobs 4 --no-run-if-empty $PSQL -f sql/model_access_$MODEL.sql -v wsg={1} ::: "${WSGS[@]}"
 
   # index barriers downstream, processing in 50k chunks (instead of usual watershed group chunks)
   CHUNK_SIZE=50000
@@ -58,7 +58,7 @@ for MODEL in ${MODELS[@]}; do
   # load to temp unlogged table with no indexes so postres does not have to think
   $PSQL -c "drop table if exists bcfishpass.barriers_${MODEL}_dnstr"
   $PSQL -c "create unlogged table bcfishpass.barriers_${MODEL}_dnstr (barriers_${MODEL}_id text, features_dnstr text[])"
-  parallel --no-run-if-empty \
+  parallel --jobs 4 --no-run-if-empty \
       "echo \"select bcfishpass.load_dnstr_chunked( \
           'bcfishpass.barriers_${MODEL}',  \
           'barriers_${MODEL}_id', \
