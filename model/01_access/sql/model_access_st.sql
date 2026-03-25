@@ -15,7 +15,7 @@ with barriers as
     geom
   from bcfishpass.barriers_gradient
   where watershed_group_code = :'wsg'
-  and barrier_type in ('GRADIENT_20', 'GRADIENT_25')
+  and barrier_type in ('GRADIENT_20', 'GRADIENT_25', 'GRADIENT_30')
   union all
   select
       barriers_falls_id as barrier_id,
@@ -106,8 +106,7 @@ habitat as (
   and round(h.upstream_route_measure::numeric) >= round(s.downstream_route_measure::numeric)
   and round(h.upstream_route_measure::numeric) <= round(s.upstream_route_measure::numeric)
   where h.habitat_ind is true
-  -- and h.species_code in ('CH','CM','CO','PK','SK','ST')
-  and h.species_code in ('ACT', 'CCT', 'CT')
+  and h.species_code in ('CH','CM','CO','PK','SK','ST')
   and s.watershed_group_code = :'wsg'
 ),
 
