@@ -74,8 +74,7 @@ obs_upstr as
   -- do not bother counting observations upstream of barriers that have been noted as barriers in the user control table
   left outer join bcfishpass.user_barriers_definite_control bc
   on b.blue_line_key = bc.blue_line_key and abs(b.downstream_route_measure - bc.downstream_route_measure) < 1
-  -- where o.species_code in ('CH','CM','CO','PK','SK','ST')
-  where o.species_code in ('ACT', 'CCT', 'CT')
+  where o.species_code in ('CT')
   and bc.barrier_ind is null
 ),
 
@@ -85,52 +84,51 @@ obs_upstr_n as
     o.barrier_id,
     count(o.obs) as n_obs
   from obs_upstr o
-  -- where o.spp in ('CH','CM','CO','PK','SK','ST')
-  where o.spp in ('ACT', 'CCT', 'CT')
+  where o.spp in ('CT')
   and o.obs_dt > date('1990-01-01')         -- only observations since 1990
   group by o.barrier_id
 ),
 
 -- exclude barriers belown known spawning/rearing habitat
-habitat as (
-  select
-    h.blue_line_key,
-    h.upstream_route_measure,
-    s.wscode_ltree,
-    s.localcode_ltree,
-    h.watershed_group_code,
-    h.species_code
-  from bcfishpass.user_habitat_classification h
-  inner join whse_basemapping.fwa_stream_networks_sp s
-  ON s.blue_line_key = h.blue_line_key
-  and round(h.upstream_route_measure::numeric) >= round(s.downstream_route_measure::numeric)
-  and round(h.upstream_route_measure::numeric) <= round(s.upstream_route_measure::numeric)
-  where h.habitat_ind is true
-  and h.species_code in ('CH','CM','CO','PK','SK','ST')
-  and s.watershed_group_code = :'wsg'
-),
+-- habitat as (
+--   select
+--     h.blue_line_key,
+--     h.upstream_route_measure,
+--     s.wscode_ltree,
+--     s.localcode_ltree,
+--     h.watershed_group_code,
+--     h.species_code
+--   from bcfishpass.user_habitat_classification h
+--   inner join whse_basemapping.fwa_stream_networks_sp s
+--   ON s.blue_line_key = h.blue_line_key
+--   and round(h.upstream_route_measure::numeric) >= round(s.downstream_route_measure::numeric)
+--   and round(h.upstream_route_measure::numeric) <= round(s.upstream_route_measure::numeric)
+--   where h.habitat_ind is true
+--   and h.species_code in ('CH','CM','CO','PK','SK','ST','CT')
+--   and s.watershed_group_code = :'wsg'
+-- ),
 
-hab_upstr as
-(
-  select
-    b.barrier_id,
-    array_agg(species_code) as species_codes
-  from barriers b
-  inner join habitat h
-  on fwa_upstream(
-        b.blue_line_key,
-        b.downstream_route_measure,
-        b.wscode_ltree,
-        b.localcode_ltree,
-        h.blue_line_key,
-        h.upstream_route_measure,
-        h.wscode_ltree,
-        h.localcode_ltree,
-        false,
-        200  -- a v large tolerance to discard habitat that ends at more or less the same location as the barrier
-      )
-  group by b.barrier_id
-),
+-- hab_upstr as
+-- (
+--   select
+--     b.barrier_id,
+--     array_agg(species_code) as species_codes
+--   from barriers b
+--   inner join habitat h
+--   on fwa_upstream(
+--         b.blue_line_key,
+--         b.downstream_route_measure,
+--         b.wscode_ltree,
+--         b.localcode_ltree,
+--         h.blue_line_key,
+--         h.upstream_route_measure,
+--         h.wscode_ltree,
+--         h.localcode_ltree,
+--         false,
+--         200  -- a v large tolerance to discard habitat that ends at more or less the same location as the barrier
+--       )
+--   group by b.barrier_id
+-- ),
 
 barriers_filtered as (
   select
@@ -146,23 +144,24 @@ barriers_filtered as (
     geom
   from barriers b
   left outer join obs_upstr_n as o on b.barrier_id = o.barrier_id
-  left outer join hab_upstr h on b.barrier_id = h.barrier_id
+  -- left outer join hab_upstr h on b.barrier_id = h.barrier_id
   where watershed_group_code = any(
       array(
         select watershed_group_code
         from bcfishpass.wsg_species_presence
-        where st is true
+        -- where st is true
+        where ct is true
       )
   )
   -- do not include gradient / falls / subsurface barriers with > 5 observations upstream
   -- but always include user added barriers
   -- for CCT: do not include gradient / falls / subsurface barriers with > 0 observations upstream
   and
-        (
+        -- (
           -- (o.n_obs is null or o.n_obs < 5) and
-          (o.n_obs is null or o.n_obs = 0) and
-          h.species_codes is null
-  )
+    (o.n_obs is null or o.n_obs = 0)
+          -- h.species_codes is null
+  -- )
 )
 
 insert into bcfishpass.barriers_st
