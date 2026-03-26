@@ -1,12 +1,8 @@
 #!/bin/bash
 set -euxo pipefail
 
-# use max 4 concurrent jobs for subsequent steps
-PARALLEL="parallel --halt now,fail=1 --jobs 4 --no-run-if-empty"
-
 PSQL="psql $DATABASE_URL -v ON_ERROR_STOP=1"
 WSGS=($(psql "$DATABASE_URL" -t -A -c "SELECT watershed_group_code FROM bcfishpass.parameters_habitat_method;"))
-
 
 # --
 # collect barrier sources into standard bcfishpass.barriers_<source> tables
@@ -18,7 +14,7 @@ for BARRIERTYPE in "${BARRIERS[@]}"; do
     $PSQL -c "select bcfishpass.create_barrier_table('$BARRIERTYPE')"
     
     # load data to barrier table in parallel
-    parallel --jobs {$PARALLEL} --halt soon,fail=1 \
+    parallel --jobs 4 --halt soon,fail=1 \
       $PSQL -f sql/barriers_"$BARRIERTYPE".sql -v wsg={1} ::: "${WSGS[@]}"
 
 done
@@ -28,7 +24,7 @@ done
 # ----
 # note all crossings downstream of a crossing
 $PSQL -c "truncate bcfishpass.crossings_dnstr_crossings"
-parallel --jobs {$PARALLEL} --no-run-if-empty \
+parallel --jobs 4 --no-run-if-empty \
   "echo \"select bcfishpass.load_dnstr( \
     'bcfishpass.crossings',  \
     'aggregated_crossings_id', \
@@ -41,7 +37,7 @@ parallel --jobs {$PARALLEL} --no-run-if-empty \
 
 # note all anthropogenic barriers downstream of a crossing
 $PSQL -c "truncate bcfishpass.crossings_dnstr_barriers_anthropogenic"
-parallel --jobs {$PARALLEL} --no-run-if-empty \
+parallel --jobs 4 --no-run-if-empty \
   "echo \"select bcfishpass.load_dnstr( \
     'bcfishpass.crossings',  \
     'aggregated_crossings_id', \
@@ -54,7 +50,7 @@ parallel --jobs {$PARALLEL} --no-run-if-empty \
 
 # note all anthropogenic barriers upstream of a crossing
 $PSQL -c "truncate bcfishpass.crossings_upstr_barriers_anthropogenic"
-parallel --jobs {$PARALLEL} --no-run-if-empty \
+parallel --jobs 4 --no-run-if-empty \
   "echo \"select bcfishpass.load_upstr( \
     'bcfishpass.crossings',  \
     'aggregated_crossings_id', \
@@ -67,7 +63,7 @@ parallel --jobs {$PARALLEL} --no-run-if-empty \
 
 # note all anthropogenic barriers downstream of an anthropogenic barrier
 $PSQL -c "truncate bcfishpass.barriers_anthropogenic_dnstr_barriers_anthropogenic"
-parallel --jobs {$PARALLEL} --no-run-if-empty \
+parallel --jobs 4 --no-run-if-empty \
   "echo \"select bcfishpass.load_dnstr( \
     'bcfishpass.barriers_anthropogenic',  \
     'barriers_anthropogenic_id', \
@@ -78,6 +74,8 @@ parallel --jobs {$PARALLEL} --no-run-if-empty \
     'false', \
     :'wsg');\" | $PSQL -v wsg={1}" ::: "${WSGS[@]}"
 
+# use max 4 concurrent jobs for subsequent steps
+PARALLEL_OPTS="--halt now,fail=1 --jobs 4 --no-run-if-empty"
 # -----
 # INDEX 
 # -----
@@ -99,11 +97,11 @@ run_query() {
     );"
 }
 export -f run_query
-parallel --jobs ${PARALLEL} run_query {1} {2} ::: "${ANTH_BARRIERS[@]}" ::: "${WSGS[@]}"
+parallel $PARALLEL_OPTS run_query {1} {2} ::: "${ANTH_BARRIERS[@]}" ::: "${WSGS[@]}"
 
 # also record all crossings downstream
 $PSQL -c "truncate bcfishpass.streams_dnstr_crossings";
-$PARALLEL \
+parallel $PARALLEL_OPTS \
     "echo \"SELECT bcfishpass.load_dnstr(
     'bcfishpass.streams',
     'segmented_stream_id',
@@ -118,7 +116,7 @@ $PARALLEL \
 # record remediations/barriers downstream (for mapping remediated stream)
 $PSQL -f sql/remediations_barriers.sql    # create required table
 $PSQL -c "truncate bcfishpass.streams_dnstr_barriers_remediations";
-$PARALLEL \
+parallel $PARALLEL_OPTS \
     "echo \"SELECT bcfishpass.load_dnstr(
     'bcfishpass.streams',
     'segmented_stream_id',
@@ -144,3 +142,11 @@ $PSQL -f sql/load_streams_access.sql
 $PSQL -c "truncate bcfishpass.crossings_upstream_access"
 parallel --halt now,fail=1 --jobs 2 --no-run-if-empty $PSQL -f sql/load_crossings_upstream_access_01.sql -v wsg={1} ::: "${WSGS[@]}"
 parallel --halt now,fail=1 --jobs 2 --no-run-if-empty $PSQL -f sql/load_crossings_upstream_access_02.sql -v wsg={1} ::: "${WSGS[@]}"    
+
+# -----
+# FIND UPSTREAM BARRIERS
+# -----
+# load barriers_all table
+# parallel --halt now,fail=1 --jobs 4 $PSQL -f sql/load_streams_upstr_obstacles.sql -v wsg={1}" ::: "${WSGS[@]}"
+
+# # record barriers upstream of observations
