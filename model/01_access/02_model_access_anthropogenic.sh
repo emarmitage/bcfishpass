@@ -138,6 +138,9 @@ $PSQL -f sql/load_crossings_upstr_observations.sql
 # load access table
 $PSQL -f sql/load_streams_access.sql
 
+# apply FISS habitat update
+$PSQL -f sql/update_fiss_habitat.sql
+
 # generate crossings access report
 $PSQL -c "truncate bcfishpass.crossings_upstream_access"
 parallel --halt now,fail=1 --jobs 2 --no-run-if-empty $PSQL -f sql/load_crossings_upstream_access_01.sql -v wsg={1} ::: "${WSGS[@]}"
