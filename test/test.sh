@@ -9,7 +9,7 @@ PSQL="psql $DATABASE_URL -v ON_ERROR_STOP=1"
 
 # load parameters/data
 # cp parameters/example_testing/*csv parameters
-# cp parameters/example_cct/*csv parameters
+cp parameters/example_cct/*csv parameters
 jobs/load_csv
 jobs/load_modelled_stream_crossings
 
