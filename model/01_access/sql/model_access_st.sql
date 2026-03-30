@@ -1,4 +1,4 @@
--- Modified for Coastal Cutthroat Trout by Emma Armitage on 2026-03-25
+-- Modified to capture all fish species observations by Emma Armitage on 2026-03-30
 
 with barriers as
 (
@@ -74,8 +74,8 @@ obs_upstr as
   -- do not bother counting observations upstream of barriers that have been noted as barriers in the user control table
   left outer join bcfishpass.user_barriers_definite_control bc
   on b.blue_line_key = bc.blue_line_key and abs(b.downstream_route_measure - bc.downstream_route_measure) < 1
-  where o.species_code in ('CT')
-  and bc.barrier_ind is null
+  -- where o.species_code in ('CT')
+  where bc.barrier_ind is null
 ),
 
 obs_upstr_n as
@@ -84,8 +84,8 @@ obs_upstr_n as
     o.barrier_id,
     count(o.obs) as n_obs
   from obs_upstr o
-  where o.spp in ('CT')
-  and o.obs_dt > date('1990-01-01')         -- only observations since 1990
+  -- where o.spp in ('CT')
+  where o.obs_dt > date('1990-01-01')         -- only observations since 1990
   group by o.barrier_id
 ),
 
@@ -150,7 +150,7 @@ barriers_filtered as (
         select watershed_group_code
         from bcfishpass.wsg_species_presence
         -- where st is true
-        where ct is true
+        -- where ct is true
       )
   )
   -- do not include gradient / falls / subsurface barriers with > 5 observations upstream
