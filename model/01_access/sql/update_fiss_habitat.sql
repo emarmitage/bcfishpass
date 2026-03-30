@@ -1,7 +1,6 @@
 with fiss_source_wscode as (
     select distinct v.wscode from bcfishpass.streams_vw v
     join bcfishpass.observations o on o.linear_feature_id = v.linear_feature_id
-    -- where v.access_st = 1 and o.species_code = 'CT' and o.source ILIKE '%FISS%' and o.obs_dt > date('1990-01-01')
     where v.access_st = 1 and o.source ILIKE '%FISS%' and o.observation_date > date('1990-01-01')
     and not exists (
         select 1
