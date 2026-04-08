@@ -139,17 +139,9 @@ $PSQL -f sql/load_crossings_upstr_observations.sql
 $PSQL -f sql/load_streams_access.sql
 
 # apply FISS habitat update
-$PSQL -f sql/update_fiss_habitat.sql
+# $PSQL -f sql/update_fiss_habitat.sql
 
 # generate crossings access report
 $PSQL -c "truncate bcfishpass.crossings_upstream_access"
 parallel --halt now,fail=1 --jobs 2 --no-run-if-empty $PSQL -f sql/load_crossings_upstream_access_01.sql -v wsg={1} ::: "${WSGS[@]}"
 parallel --halt now,fail=1 --jobs 2 --no-run-if-empty $PSQL -f sql/load_crossings_upstream_access_02.sql -v wsg={1} ::: "${WSGS[@]}"    
-
-# -----
-# FIND UPSTREAM BARRIERS
-# -----
-# load barriers_all table
-# parallel --halt now,fail=1 --jobs 4 $PSQL -f sql/load_streams_upstr_obstacles.sql -v wsg={1}" ::: "${WSGS[@]}"
-
-# # record barriers upstream of observations
