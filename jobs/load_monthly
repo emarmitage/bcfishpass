@@ -9,7 +9,7 @@ PSQL="psql $DATABASE_URL -v ON_ERROR_STOP=1"
 
 # bcdata loads
 # ----
-jq -c '.[]' bcgw_sources.json | while read item; do
+jq -c '.[]' jobs/bcgw_sources.json | while read item; do
     schedule=$(jq -r '.schedule' <<< "$item")
     source=$(jq -r '.source' <<< "$item")
     if [ "$schedule" == "M" ] ; then
