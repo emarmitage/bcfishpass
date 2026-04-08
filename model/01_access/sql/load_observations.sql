@@ -32,10 +32,10 @@ begin;
       case
         when species_code = 'CCT' then 'CT'
         when species_code = 'ACT' then 'CT'
-        when species_code = 'CT/RB' then 'CT'
         else species_code
       end as species_code_remap
     from bcfishobs.observations e
+    where species_code <> 'CT/RB' -- exclude CT/RB records
   )
 
   -- filter on species code and watershed group
