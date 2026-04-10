@@ -115,11 +115,17 @@ begin;
        when b.barriers_ct_dv_rb_dnstr is null and coalesce(ou.obsrvtn_species_codes_upstr, array[]::text[]) && array['CT','DV','RB'] is false then 1
        when b.barriers_ct_dv_rb_dnstr is not null and wsg_ct_dv_rb.watershed_group_code is not null then 0
      end as access_ct_dv_rb,
+    --  case
+    --    when wsg_ct.watershed_group_code is null then -9
+    --    when b.barriers_st_dnstr is null and 'CT' = any(coalesce(ou.obsrvtn_species_codes_upstr, array[]::text[])) then 2
+    --    when b.barriers_st_dnstr is null and 'CT' = any(coalesce(ou.obsrvtn_species_codes_upstr, array[]::text[])) is false then 1
+    --    when b.barriers_st_dnstr is not null and wsg_ct.watershed_group_code is not null then 0
+    --  end as access_st,
      case
        when wsg_ct.watershed_group_code is null then -9
-       when b.barriers_st_dnstr is null and 'CT' = any(coalesce(ou.obsrvtn_species_codes_upstr, array[]::text[])) then 2
-       when b.barriers_st_dnstr is null and 'CT' = any(coalesce(ou.obsrvtn_species_codes_upstr, array[]::text[])) is false then 1
-       when b.barriers_st_dnstr is not null and wsg_ct.watershed_group_code is not null then 0
+       when 'CT' = any(coalesce(ou.obsrvtn_species_codes_upstr, array[]::text[])) then 2
+       when b.barriers_st_dnstr is null then 1
+       when b.barriers_st_dnstr is not null then 0
      end as access_st,
      case
        when wsg_wct.watershed_group_code is null then -9
