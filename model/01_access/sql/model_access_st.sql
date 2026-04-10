@@ -85,7 +85,7 @@ obs_upstr_n as
     count(o.obs) as n_obs
   from obs_upstr o
   where o.spp in ('CT')
-  -- and o.obs_dt > date('1990-01-01')         -- only observations since 1990
+  and o.obs_dt > date('1990-01-01')         -- only observations since 1990
   group by o.barrier_id
 ),
 
