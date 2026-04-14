@@ -110,9 +110,18 @@ Drop unused columns
 
     BEGIN;
 
-    ALTER TABLE <table-name> DROP COLUMN barriers_bt_dnstr,  DROP COLUMN barriers_ch_cm_co_pk_sk_dnstr,  DROP COLUMN barriers_ct_dv_rb_dnstr,   DROP COLUMN
-    barriers_wct_dnstr,  DROP COLUMN access_bt,  DROP COLUMN access_ch,  DROP COLUMN access_cm, DROP COLUMN access_co,  DROP COLUMN access_pk,  DROP COLUMN
-    access_wct,  DROP COLUMN access_salmon, DROP COLUMN access_sk;
+    ALTER TABLE <table-name> DROP COLUMN barriers_bt_dnstr,  
+    DROP COLUMN barriers_ch_cm_co_pk_sk_dnstr,  
+    DROP COLUMN barriers_ct_dv_rb_dnstr,   
+    DROP COLUMN barriers_wct_dnstr,  
+    DROP COLUMN access_bt,  
+    DROP COLUMN access_ch,  
+    DROP COLUMN access_cm, 
+    DROP COLUMN access_co,  
+    DROP COLUMN access_pk,  
+    DROP COLUMN access_wct,  
+    DROP COLUMN access_salmon, 
+    DROP COLUMN access_sk;
 
     ALTER TABLE <table-name> DROP COLUMN spawning_bt,                
     DROP COLUMN spawning_ch,           
