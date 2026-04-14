@@ -101,5 +101,67 @@ Verify that the table exists in your local db:
 
 You can now connect to the db and view the data in PGAdmin, QGIS. You may need to set a password on the db and find the WSL IP address to connect to the db. 
 
+## Post-Export Table Operations
+First, connect to the local postgres database
 
+    psql -U <username> -d <database-name>
+
+Drop unused columns
+
+    BEGIN;
+
+    ALTER TABLE <table-name> DROP COLUMN barriers_bt_dnstr,  DROP COLUMN barriers_ch_cm_co_pk_sk_dnstr,  DROP COLUMN barriers_ct_dv_rb_dnstr,   DROP COLUMN
+    barriers_wct_dnstr,  DROP COLUMN access_bt,  DROP COLUMN access_ch,  DROP COLUMN access_cm, DROP COLUMN access_co,  DROP COLUMN access_pk,  DROP COLUMN
+    access_wct,  DROP COLUMN access_salmon, DROP COLUMN access_sk;
+
+    ALTER TABLE <table-name> DROP COLUMN spawning_bt,                
+    DROP COLUMN spawning_ch,           
+    DROP COLUMN spawning_cm,               
+    DROP COLUMN spawning_co,               
+    DROP COLUMN spawning_pk,           
+    DROP COLUMN spawning_sk,              
+    DROP COLUMN spawning_st,                
+    DROP COLUMN spawning_wct,            
+    DROP COLUMN rearing_bt,       
+    DROP COLUMN rearing_ch,                 
+    DROP COLUMN rearing_co,         
+    DROP COLUMN rearing_sk,              
+    DROP COLUMN rearing_st,                 
+    DROP COLUMN rearing_wct,        
+    DROP COLUMN mapping_code_bt,              
+    DROP COLUMN mapping_code_ch,           
+    DROP COLUMN mapping_code_cm,            
+    DROP COLUMN mapping_code_co,              
+    DROP COLUMN mapping_code_pk,             
+    DROP COLUMN mapping_code_sk,            
+    DROP COLUMN mapping_code_st,
+    DROP COLUMN mapping_code_wct,
+    DROP COLUMN mapping_code_salmon;    
+
+    COMMIT;
+
+RENAME access_st column
+
+    BEGIN;
+
+    ALTER TABLE <table-name> RENAME COLUMN barriers_st_dnstr TO barriers_dnstr;
+    ALTER TABLE <table-name> RENAME COLUMN access_st TO stream_access_code;
+
+    COMMIT;
+
+Add and calculate stream_access_desc column
+
+    BEGIN;
+
+    ALTER TABLE <table-name> ADD stream_access_desc text;
+
+    UPDATE <table-name>
+    SET stream_access_desc = CASE
+        WHEN stream_access_code=1 THEN 'Modelled Accessible'
+        WHEN stream_access_code=2 THEN 'Observed Accessible'
+        WHEN stream_access_code=0 THEN 'Natural barrier downstream - not fish habitat'
+        WHEN stream_access_code=-9 THEN 'Not modelled - no fish observations in watershed'
+    END;
+
+    COMMIT;
 
