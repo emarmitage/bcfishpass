@@ -24,6 +24,7 @@ WITH spp AS (
         1
       )
       WHERE a.watershed_group_code = :'wsg'
+      AND b.observation_date > date('1990-01-01')        -- only observations since 1990
   ) as f
   GROUP BY segmented_stream_id
 ),

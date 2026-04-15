@@ -76,7 +76,7 @@ obs_upstr as
   on b.blue_line_key = bc.blue_line_key and abs(b.downstream_route_measure - bc.downstream_route_measure) < 1
   -- where o.species_code in ('CT')
   where o.observation_date > date('1990-01-01')        -- only observations since 1990
-  where bc.barrier_ind is null
+  and bc.barrier_ind is null
 ),
 
 obs_upstr_n as
