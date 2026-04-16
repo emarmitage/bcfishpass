@@ -75,7 +75,7 @@ obs_upstr as
   left outer join bcfishpass.user_barriers_definite_control bc
   on b.blue_line_key = bc.blue_line_key and abs(b.downstream_route_measure - bc.downstream_route_measure) < 1
   -- where o.species_code in ('CT')
-  where o.observation_date > date('1990-01-01')        -- only observations since 1990
+  -- where o.observation_date > date('1990-01-01')        -- only observations since 1990
   and bc.barrier_ind is null
 ),
 
