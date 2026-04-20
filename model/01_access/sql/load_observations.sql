@@ -117,7 +117,8 @@ begin;
   -- and array[o.species_code]::text[] && wsg_spp.species_codes
   -- exclude observations identified by QA as invalid (for fish passage modelling purposes)
   left outer join bcfishpass.observation_exclusions x on o.observation_key = x.observation_key
-  where coalesce(x.data_error, false) is false AND coalesce(x.release_exclude, false) is false;
+  where coalesce(x.data_error, false) is false AND coalesce(x.release_exclude, false) is false
+  and (o.observation_date >= date('1990-01-01') or o.observation_date is null);
 
   -- use source_ref to find and tag records related to stocking/releases
   
